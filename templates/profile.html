@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+    .height-description {
+      height: 130px;
+    }
+    </style>
+    <title>Personality Profile</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand">Social Profile</a>
+      <form class="form-inline">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">@</span>
+          </div>
+          <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </nav>
+    <!-- <div class="container"> -->
+    <div class="container">
+      <h1>Personality profile for <span class="text-primary">@<a href="#">BarackObama</a></span></h1>
+
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="chart-container" style="position: relative; width:100%">
+              <canvas id="barChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col" style="height: 400px;">
+          <div class="card-group">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <!--
+              <div class="chart-container" style="position: relative;">
+                <canvas id="stackedBarChart"></canvas>
+              </div>
+            -->
+            <div class="height-description">
+              <h5 class="card-title">Openness</h5>
+              <p class="card-text">The extent to which a person is open to experiencing a variety of activities.</p>
+            </div>
+              <h1 class="display-2">60<small class="font-weight-light font-italic">th</small></h1>
+              <h6 class="card-subtitle mb-2 text-muted text-right">percentile</h6>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <div class="height-description">
+              <h5 class="card-title">Conscientiousness</h5>
+              <p class="card-text">A person's tendency to act in an organized or thoughtful way.</p>
+            </div>
+              <h1 class="display-2">20<small class="font-weight-light font-italic">th</small></h1>
+              <h6 class="card-subtitle mb-2 text-muted text-right">percentile</h6>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <div class="height-description">
+              <h5 class="card-title">Extraversion</h5>
+              <p class="card-text">A person's tendency to seek stimulation in the company of others.</p>
+            </div>
+              <h1 class="display-2">30<small class="font-weight-light font-italic">th</small></h1>
+              <h6 class="card-subtitle mb-2 text-muted text-right align-bottom">percentile</h6>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <div class="height-description">
+              <h5 class="card-title">Agreeableness</h5>
+              <p class="card-text">A person's tendency to be compassionate and cooperative toward others.</p>
+            </div>
+              <h1 class="display-2">90<small class="font-weight-light font-italic">th</small></h1>
+              <h6 class="card-subtitle mb-2 text-muted text-right align-bottom">percentile</h6>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <div class="height-description">
+              <h5 class="card-title">Emotional range</h5>
+              <p class="card-text">The extent to which a person's emotions are sensitive to the person's environment.</p>
+            </div>
+              <h1 class="display-2">80<small class="font-weight-light font-italic">th</small></h1>
+              <h6 class="card-subtitle mb-2 text-muted text-right align-bottom">percentile</h6>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+        <!-- </div> -->
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+    <script>
+    /*
+      var stackedBar = document.getElementById("stackedBarChart");
+      var myChart = new Chart(stackedBar, {
+          type: 'bar',
+          data: {
+              labels: ["Openness"],
+              datasets: [{
+                  label: '',
+                  data: [68],
+                  borderWidth: 1,
+                  backgroundColor: 'rgba(255, 99, 132, 0.2)'
+              },{
+                  label: '',
+                  data: [32],
+                  borderWidth: 1,
+                  backgroundColor: 'rgba(54, 162, 235, 0.2)'
+              }]
+          },
+          options: {
+            scales: {
+                xAxes: [{
+                    stacked: true
+                }],
+                yAxes: [{
+                    stacked: true
+                }]
+            }
+        }
+      });
+      */
+      var bar = document.getElementById("barChart");
+      var myChart = new Chart(bar, {
+          type: 'bar',
+          data: {
+              labels: ["Openness", "Conscientiousness", "Extraversion", "Agreeableness", "Emotional range"],
+              datasets: [{
+                  data: [60, 20, 30, 90, 80],
+                  backgroundColor: [
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(255, 206, 86, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(153, 102, 255, 0.2)'
+                  ],
+                  borderColor: [
+                      'rgba(255,99,132,1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 206, 86, 1)',
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(153, 102, 255, 1)'
+                  ],
+                  borderWidth: 1
+              },{
+                  data: [40, 80, 70, 10, 20],
+                  backgroundColor: [
+                      'rgba(255,255,255,0)',
+                      'rgba(255,255,255,0)',
+                      'rgba(255,255,255,0)',
+                      'rgba(255,255,255,0)',
+                      'rgba(255,255,255,0)'
+                  ],
+                  borderColor: [
+                      'rgba(255,99,132,1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 206, 86, 1)',
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(153, 102, 255, 1)'
+                  ],
+                  borderWidth: 1
+              }]
+          },
+          options: {
+            hover: {
+              mode: null
+            },
+            scales: {
+                xAxes: [{
+                    stacked: true
+                }],
+                yAxes: [{
+                    stacked: true,
+                    scaleLabel: {
+                      labelString: 'Percentile',
+                      display: true
+      							}
+                }]
+            },
+            legend: {
+              display: false
+            },
+            tooltips: {
+              enabled: false,
+  						position: 'nearest',
+  						mode: 'index',
+  						intersect: false,
+              callbacks: {
+  						// Use the footer callback to display the sum of the items showing in the tooltip
+  						label: function() {
+  							return 'Foobar';
+  						},
+  					},
+  					}
+        }
+      });
+      var radar = document.getElementById("radarChart");
+      var myRadarChart = new Chart(radar, {
+          type: 'radar',
+          data: {
+              labels: ["Openness", "Conscientiousness", "Extraversion", "Agreeableness", "Emotional range"],
+              datasets: [{
+                  data: [76, 97, 78, 85, 89]
+              }]
+          },
+          options: {
+          scale: {
+            ticks: {
+              min: 0,
+              max: 100
+            }
+          }
+      }
+      });
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS, then Chart JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+  </body>
+</html>

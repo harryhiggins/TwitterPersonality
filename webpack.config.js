@@ -5,25 +5,37 @@ const nodeExternals = require('webpack-node-externals');
 
 const client = {
     entry: {
-        app: './app.js',
+        app: './app/index.js',
     },
     devtool: 'inline-source-map',
     plugins: [
-        new CleanWebpackPlugin(['./dist']),
-        new HtmlWebpackPlugin({
-            title: 'Output Management'
-        })
+        new CleanWebpackPlugin(['./dist'])
     ],
+    module: {
+      loaders: [
+        {
+          test: /\.css$/,
+          use: 'style!css?modules',
+        },
+        {
+          test: /\.js$/,
+          loader: 'babel-loader',
+          query: {
+            presets: ['es2015', 'react']
+          }
+        }
+      ]
+    },
     output: {
-        filename: '[name].bundle.js',
+        filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
-        publicPath: '/'
+        publicPath: '/dist/'
     }
 };
 
 const server = {
     entry: {
-      server: './server.js'
+      server: './server/server.js'
     },
     externals: [
       nodeExternals()
@@ -31,6 +43,17 @@ const server = {
     plugins: [
         new CleanWebpackPlugin(['./dist'])
     ],
+    module: {
+      loaders: [
+        {
+          test: /\.js$/,
+          loader: 'babel-loader',
+          query: {
+            presets: ['es2015', 'react']
+          }
+        }
+      ]
+    },
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
